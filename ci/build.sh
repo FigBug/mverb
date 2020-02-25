@@ -118,8 +118,10 @@ if [ "$OS" = "linux" ]; then
   make CONFIG=Release
 
   cd "$ROOT/plugin/Builds/LinuxMakefile"
+  find .
   cp  ./build/$PLUGIN.so "$ROOT/ci/bin"
 
+  ls
   rm -Rf ${PLUGIN}_Linux.zip
   zip -r ${PLUGIN}_Linux.zip $PLUGIN.so
 

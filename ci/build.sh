@@ -117,17 +117,13 @@ if [ "$OS" = "linux" ]; then
   cd "$ROOT/plugin/Builds/LinuxMakefile"
   make CONFIG=Release
 
-  echo "copy .so to bin"
   cd "$ROOT/plugin/Builds/LinuxMakefile"
-  find .
   cp  ./build/$PLUGIN.so "$ROOT/ci/bin"
 
-  echo "zip plugin"
-  ls
+  cd "$ROOT/ci/bin"
   rm -Rf ${PLUGIN}_Linux.zip
   zip -r ${PLUGIN}_Linux.zip $PLUGIN.so
 
-  echo "upload"
   curl -F "files=@${PLUGIN}_Linux.zip" "https://socalabs.com/files/set.php?key=$APIKEY"
 fi
 

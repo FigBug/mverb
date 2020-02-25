@@ -120,7 +120,7 @@ if [ "$OS" = "linux" ]; then
   cd "$ROOT/plugin/Builds/LinuxMakefile"
   cp  ./build/$PLUGIN.so "$ROOT/ci/bin"
 
-  rm ${PLUGIN}_Linux.zip
+  rm -Rf ${PLUGIN}_Linux.zip
   zip -r ${PLUGIN}_Linux.zip $PLUGIN.so
 
   curl -F "files=@${PLUGIN}_Linux.zip" "https://socalabs.com/files/set.php?key=$APIKEY"

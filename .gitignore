@@ -1,36 +1,52 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
+# Prerequisites
+*.d
 
-# Folder config file
-Desktop.ini
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
+# Precompiled Headers
+*.gch
+*.pch
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
 
-# =========================
-# Operating System Files
-# =========================
+# Fortran module files
+*.mod
+*.smod
 
-# OSX
-# =========================
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
 
-.DS_Store
-.AppleDouble
-.LSOverride
+# Executables
+*.exe
+*.out
+*.app
 
-# Icon must ends with two \r.
-Icon
+Debug
+Release
 
-# Thumbnails
-._*
+*.suo
+*.db
+*.opendb
+*.xcuserstate
+*.xcscheme
+*.xcbkptlist
 
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
+plugin/Builds/VisualStudio2015/x64
+plugin/Builds/VisualStudio2017/x64
+plugin/Builds/VisualStudio2017/Win32
+plugin/Builds/VisualStudio2017/.vs
+*.user
+
+xcuserdata
+Builds
+JuceLibraryCode

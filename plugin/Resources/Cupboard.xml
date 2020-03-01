@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<state name="Cupboard" valueTree="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;state/&gt;&#13;&#10;">
+  <param uid="MIX" val="35.0"/>
+  <param uid="PREDELAY" val="0.0"/>
+  <param uid="EARLYMIX" val="75.0"/>
+  <param uid="SIZE" val="25.0"/>
+  <param uid="DENSITY" val="50.0"/>
+  <param uid="BANDWIDTHFREQ" val="100.0"/>
+  <param uid="DECAY" val="50.0"/>
+  <param uid="DAMPINGFREQ" val="0.0"/>
+  <param uid="GAIN" val="100.0"/>
+</state>

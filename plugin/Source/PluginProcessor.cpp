@@ -1,5 +1,6 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
+#include "BinaryData.h"
 
 using namespace gin;
 
@@ -9,13 +10,20 @@ MverbAudioProcessor::MverbAudioProcessor()
 {
     mix           = addExtParam ("MIX",           "Mix",     "", "",  { 0.0f, 100.0f, 0.0f, 1.0f }, 100.0f, 0.0f);
     predelay      = addExtParam ("PREDELAY",      "Pre",     "", "",  { 0.0f, 100.0f, 0.0f, 1.0f },  50.0f, 0.0f);
-    earlymix      = addExtParam ("EARLYMIX",      "El/Mx",   "", "",  { 0.0f, 100.0f, 0.0f, 1.0f }, 100.0f, 0.0f);
+    earlymix      = addExtParam ("EARLYMIX",      "EL/Mx",   "", "",  { 0.0f, 100.0f, 0.0f, 1.0f }, 100.0f, 0.0f);
     size          = addExtParam ("SIZE",          "Size",    "", "",  { 0.0f, 100.0f, 0.0f, 1.0f }, 100.0f, 0.0f);
     density       = addExtParam ("DENSITY",       "Density", "", "",  { 0.0f, 100.0f, 0.0f, 1.0f },  50.0f, 0.0f);
     bandwidthfreq = addExtParam ("BANDWIDTHFREQ", "Band",    "", "",  { 0.0f, 100.0f, 0.0f, 1.0f },  90.0f, 0.0f);
     decay         = addExtParam ("DECAY",         "Decay",   "", "",  { 0.0f, 100.0f, 0.0f, 1.0f },  50.0f, 0.0f);
     dampingfreq   = addExtParam ("DAMPINGFREQ",   "Damp",    "", "",  { 0.0f, 100.0f, 0.0f, 1.0f },  90.0f, 0.0f);
     gain          = addExtParam ("GAIN",          "Gain",    "", "",  { 0.0f, 100.0f, 0.0f, 1.0f }, 100.0f, 0.0f);
+
+	for (int i = 0; i < BinaryData::namedResourceListSize; i++)
+	{
+		int sz = 0;
+		if (auto data = BinaryData::getNamedResource (BinaryData::namedResourceList[i], sz))
+			extractProgram (BinaryData::originalFilenames[i], MemoryBlock (data, size_t (sz)));
+	}
 }
 
 MverbAudioProcessor::~MverbAudioProcessor()

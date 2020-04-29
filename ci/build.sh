@@ -148,10 +148,10 @@ if [ "$OS" = "win" ]; then
 
   cd "$ROOT/ci/bin"
 
-  cp "$ROOT/plugin/Builds/VisualStudio2019/x64/Release64/VST/${PLUGIN}_64b.dll" .
+  cp "$ROOT/plugin/Builds/VisualStudio2019/x64/Release64/VST/${PLUGIN}.dll" .
   cp "$ROOT/plugin/Builds/VisualStudio2019/Win32/Release/VST/${PLUGIN}_32b.dll" .
 
-  7z a ${PLUGIN}_Win.zip ${PLUGIN}_64b.dll ${PLUGIN}_32b.dll
+  7z a ${PLUGIN}_Win.zip ${PLUGIN}.dll ${PLUGIN}_32b.dll
 
   if [ "$BRANCH" = "release" ]; then
     curl -F "files=@${PLUGIN}_Win.zip" "https://socalabs.com/files/set.php?key=$APIKEY"

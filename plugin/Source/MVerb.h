@@ -250,7 +250,7 @@ public:
                     break;
             case SIZE:
             {
-                    auto newSize = Size = (0.95 * value) + 0.05;
+                    auto newSize = (0.95 * value) + 0.05;
                     if (std::abs (newSize - Size) > 0.0001)
                     {
                         Size = newSize;

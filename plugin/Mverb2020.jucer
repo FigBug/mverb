@@ -8,13 +8,13 @@
               pluginIsSynth="0" pluginWantsMidiIn="0" pluginProducesMidiOut="0"
               pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="Mverb2020AU"
               aaxIdentifier="com.socalabs.Mverb2020" pluginAAXCategory="2"
-              jucerVersion="5.4.7" companyName="SocaLabs" companyWebsite="www.socalabs.com"
-              companyEmail="info@socalabs.com" displaySplashScreen="0" reportAppUsage="0"
-              splashScreenColour="Dark" buildStandalone="1" enableIAA="0" cppLanguageStandard="17"
-              companyCopyright="SocaLabs" pluginFormats="buildAU,buildStandalone,buildVST"
-              pluginAUMainType="'aufx'" pluginVSTCategory="kPlugCategEffect"
-              pluginVST3Category="Fx,Reverb" pluginRTASDisableBypass="0" pluginRTASDisableMultiMono="0"
-              pluginAAXDisableBypass="0" pluginAAXDisableMultiMono="0">
+              companyName="SocaLabs" companyWebsite="www.socalabs.com" companyEmail="info@socalabs.com"
+              displaySplashScreen="0" reportAppUsage="0" splashScreenColour="Dark"
+              buildStandalone="1" enableIAA="0" cppLanguageStandard="17" companyCopyright="SocaLabs"
+              pluginFormats="buildAU,buildStandalone,buildVST" pluginAUMainType="'aufx'"
+              pluginVSTCategory="kPlugCategEffect" pluginVST3Category="Fx,Reverb"
+              pluginRTASDisableBypass="0" pluginRTASDisableMultiMono="0" pluginAAXDisableBypass="0"
+              pluginAAXDisableMultiMono="0" jucerFormatVersion="1">
   <MAINGROUP id="dPRjsF" name="Mverb2020">
     <GROUP id="{B033904A-A7D7-B03A-462B-D6E9AEFDB9C1}" name="Presets">
       <FILE id="TtHcE2" name="Cupboard.xml" compile="0" resource="1" file="Resources/Cupboard.xml"/>

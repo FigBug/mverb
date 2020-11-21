@@ -33,7 +33,7 @@ MverbAudioProcessor::~MverbAudioProcessor()
 //==============================================================================
 void MverbAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    GinProcessor::prepareToPlay (sampleRate, samplesPerBlock);
+    Processor::prepareToPlay (sampleRate, samplesPerBlock);
     
     updateParams();
     mverb.setSampleRate (float (sampleRate));

@@ -17,7 +17,7 @@
 //==============================================================================
 /**
 */
-class MverbAudioProcessor : public gin::GinProcessor
+class MverbAudioProcessor : public gin::Processor
 {
 public:
     //==============================================================================

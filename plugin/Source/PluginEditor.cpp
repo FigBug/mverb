@@ -5,7 +5,7 @@ using namespace gin;
 
 //==============================================================================
 MverbAudioProcessorEditor::MverbAudioProcessorEditor (MverbAudioProcessor& p)
-  : GinAudioProcessorEditor (p, 60, 100), proc (p)
+  : ProcessorEditor (p, 60, 100), mverbProc (p)
 {
     additionalProgramming = "Martin Eastwood";
     
@@ -27,12 +27,12 @@ MverbAudioProcessorEditor::~MverbAudioProcessorEditor()
 //==============================================================================
 void MverbAudioProcessorEditor::paint (Graphics& g)
 {
-    GinAudioProcessorEditor::paint (g);
+    ProcessorEditor::paint (g);
 }
 
 void MverbAudioProcessorEditor::resized()
 {
-    GinAudioProcessorEditor::resized();
+    ProcessorEditor::resized();
     
     int idx = 0;
     for (auto pp : proc.getPluginParameters())

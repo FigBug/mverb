@@ -6,7 +6,7 @@
 //==============================================================================
 /**
 */
-class MverbAudioProcessorEditor  : public gin::GinAudioProcessorEditor
+class MverbAudioProcessorEditor  : public gin::ProcessorEditor
 {
 public:
     MverbAudioProcessorEditor (MverbAudioProcessor&);
@@ -16,7 +16,7 @@ public:
     void resized() override;
     void paint (Graphics& g) override;
 
-    MverbAudioProcessor& proc;
+    MverbAudioProcessor& mverbProc;
         
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MverbAudioProcessorEditor)
 };

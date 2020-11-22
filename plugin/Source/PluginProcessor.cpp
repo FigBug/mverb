@@ -22,11 +22,11 @@ MverbAudioProcessor::MverbAudioProcessor()
 	});
 	size          = addExtParam ("SIZE",          "Size",    "", "",  	{ 0.0f, 100.0f, 0.0f, 1.0f }, 100.0f, 0.0f, [] (const gin::Parameter&, float v)
 	{
-		return formatNumber ((0.95f * v / 100.0f) + 0.05f);
+		return formatNumber (((0.95f * v / 100.0f) + 0.05f) * 100.0f);
 	});
 	density       = addExtParam ("DENSITY",       "Density", "", "",  	{ 0.0f, 100.0f, 0.0f, 1.0f },  50.0f, 0.0f, [] (const gin::Parameter&, float v)
 	{
-		return formatNumber (v / 100.0f * 0.7995f + 0.005f);
+		return formatNumber ((v / 100.0f * 0.7995f + 0.005f) * 100.0f);
 	});
 	bandwidthfreq = addExtParam ("BANDWIDTHFREQ", "Bandwidth Frequency",    "Band", "Hz", 	{ 0.0f, 100.0f, 0.0f, 1.0f },  90.0f, 0.0f, [] (const gin::Parameter&, float v)
 	{
@@ -34,7 +34,7 @@ MverbAudioProcessor::MverbAudioProcessor()
 	});
 	decay         = addExtParam ("DECAY",         "Decay",   "", "",  	{ 0.0f, 100.0f, 0.0f, 1.0f },  50.0f, 0.0f, [] (const gin::Parameter&, float v)
 	{
-		return formatNumber (v / 100.0f * 0.7995f + 0.005f);
+		return formatNumber ((v / 100.0f * 0.7995f + 0.005f) * 100.0f);
 	});
 	dampingfreq   = addExtParam ("DAMPINGFREQ",   "Damping Frequency",    "Damp", "Hz", 	{ 0.0f, 100.0f, 0.0f, 1.0f },  90.0f, 0.0f, [] (const gin::Parameter&, float v)
 	{

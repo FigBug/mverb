@@ -234,7 +234,7 @@ public:
 		earlyReflectionsDelayLine[1].SetIndex (0, 0.0099*SampleRate, 0.011*SampleRate, 0.0182*SampleRate,0.0189*SampleRate, 0.0213*SampleRate, 0.0431*SampleRate, 0);
 	}
 
-	void setParameter(int index, T value)
+	void setParameter (int index, T value)
 	{
 		switch(index)
 		{

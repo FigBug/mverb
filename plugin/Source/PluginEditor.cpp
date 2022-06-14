@@ -5,7 +5,7 @@ using namespace gin;
 
 //==============================================================================
 MverbAudioProcessorEditor::MverbAudioProcessorEditor (MverbAudioProcessor& p)
-  : ProcessorEditor (p, 60, 100), mverbProc (p)
+  : ProcessorEditor (p), mverbProc (p)
 {
     additionalProgramming = "Martin Eastwood";
     
@@ -35,7 +35,7 @@ void MverbAudioProcessorEditor::resized()
     ProcessorEditor::resized();
     
     int idx = 0;
-    for (auto pp : proc.getPluginParameters())
+    for (auto pp : ginProcessor.getPluginParameters())
         if (auto c = componentForParam (*pp))
             c->setBounds (getGridArea (idx++, 0));
 }

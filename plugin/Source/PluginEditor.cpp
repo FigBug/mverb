@@ -5,7 +5,7 @@ using namespace gin;
 
 //==============================================================================
 MverbAudioProcessorEditor::MverbAudioProcessorEditor (MverbAudioProcessor& p)
-  : ProcessorEditor (p, 60, 100), mverbProc (p)
+  : ProcessorEditor (p), mverbProc (p)
 {
     additionalProgramming = "Martin Eastwood";
     

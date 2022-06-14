@@ -35,7 +35,7 @@ void MverbAudioProcessorEditor::resized()
     ProcessorEditor::resized();
     
     int idx = 0;
-    for (auto pp : proc.getPluginParameters())
+    for (auto pp : mverbProc.getPluginParameters())
         if (auto c = componentForParam (*pp))
             c->setBounds (getGridArea (idx++, 0));
 }

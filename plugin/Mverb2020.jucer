@@ -15,7 +15,8 @@
               pluginAUMainType="'aufx'" pluginVSTCategory="kPlugCategEffect"
               pluginVST3Category="Fx,Reverb" pluginRTASDisableBypass="0" pluginRTASDisableMultiMono="0"
               pluginAAXDisableBypass="0" pluginAAXDisableMultiMono="0" jucerFormatVersion="1"
-              defines="JUCE_MODAL_LOOPS_PERMITTED=1&#10;JUCE_DISPLAY_SPLASH_SCREEN=0">
+              defines="JUCE_MODAL_LOOPS_PERMITTED=1&#10;JUCE_DISPLAY_SPLASH_SCREEN=0"
+              lv2Uri="https://socalabs.com/mverb2020/">
   <MAINGROUP id="dPRjsF" name="Mverb2020">
     <GROUP id="{B033904A-A7D7-B03A-462B-D6E9AEFDB9C1}" name="Presets">
       <FILE id="TtHcE2" name="Cupboard.xml" compile="0" resource="1" file="Resources/Cupboard.xml"/>

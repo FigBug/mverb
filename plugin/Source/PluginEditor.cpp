@@ -1,15 +1,13 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-using namespace gin;
-
 //==============================================================================
 MverbAudioProcessorEditor::MverbAudioProcessorEditor (MverbAudioProcessor& p)
   : ProcessorEditor (p), mverbProc (p)
 {
     for (auto pp : p.getPluginParameters())
     {
-        auto c = new Knob (pp);
+        auto c = new gin::Knob (pp);
         
         addAndMakeVisible (c);
         controls.add (c);
@@ -23,7 +21,7 @@ MverbAudioProcessorEditor::~MverbAudioProcessorEditor()
 }
 
 //==============================================================================
-void MverbAudioProcessorEditor::paint (Graphics& g)
+void MverbAudioProcessorEditor::paint (juce::Graphics& g)
 {
     ProcessorEditor::paint (g);
 }

@@ -7,6 +7,7 @@ using namespace gin;
 
 //==============================================================================
 MverbAudioProcessor::MverbAudioProcessor()
+    : gin::Processor (false, gin::ProcessorOptions().withAdditionalCredits ({"Martin Eastwood"}))
 {
 	mix           = addExtParam ("MIX",           "Mix",     "", "%",	{ 0.0f, 100.0f, 0.0f, 1.0f }, 100.0f, 0.0f, [] (const gin::Parameter&, float v)
 	{
@@ -51,6 +52,7 @@ MverbAudioProcessor::MverbAudioProcessor()
 		if (auto data = BinaryData::getNamedResource (BinaryData::namedResourceList[i], sz))
 			extractProgram (BinaryData::originalFilenames[i], MemoryBlock (data, size_t (sz)));
 	}
+    init();
 }
 
 MverbAudioProcessor::~MverbAudioProcessor()

@@ -7,8 +7,6 @@ using namespace gin;
 MverbAudioProcessorEditor::MverbAudioProcessorEditor (MverbAudioProcessor& p)
   : ProcessorEditor (p), mverbProc (p)
 {
-    additionalProgramming = "Martin Eastwood";
-    
     for (auto pp : p.getPluginParameters())
     {
         auto c = new Knob (pp);

@@ -77,7 +77,7 @@ set_property (DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/modules/juce" APPEND PROPERTY
 
 # Gin modules
 
-foreach(module_name IN ITEMS gin gin_dsp gin_graphics gin_gui gin_metadata gin_network gin_plugin gin_webp)
+foreach(module_name IN ITEMS gin gin_simd gin_dsp gin_graphics gin_gui gin_metadata gin_network gin_plugin gin_webp)
 	juce_add_module (
 		"${CMAKE_CURRENT_LIST_DIR}/modules/gin/modules/${module_name}"
 		)
@@ -145,6 +145,7 @@ target_link_libraries (${PLUGIN_NAME} PRIVATE
 						gin_graphics
 						gin_gui
 						gin_plugin
+						gin_simd
 
 						juce::juce_audio_basics
 						juce::juce_audio_devices

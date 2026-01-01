@@ -4,7 +4,8 @@ cmake_minimum_required (VERSION 3.24.0 FATAL_ERROR)
 # Set for each plugin
 #
 set (PLUGIN_NAME Mverb2020)
-set (PLUGIN_VERSION 1.1.0)
+file(READ "${CMAKE_CURRENT_SOURCE_DIR}/VERSION" PLUGIN_VERSION)
+string(STRIP "${PLUGIN_VERSION}" PLUGIN_VERSION)
 set (BUNDLE_ID com.socalabs.Mverb2020)
 set (AU_ID Mverb2020AU)
 set (LV2_URI https://socalabs.com/mverb2020/)

@@ -3,8 +3,16 @@
 #include "BinaryData.h"
 
 //==============================================================================
+static gin::ProcessorOptions createProcessorOptions()
+{
+    gin::ProcessorOptions opts;
+    opts.withAdditionalCredits ({"Martin Eastwood"});
+    opts.hasMidiLearn = true;
+    return opts;
+}
+
 MverbAudioProcessor::MverbAudioProcessor()
-    : gin::Processor (false, gin::ProcessorOptions().withAdditionalCredits ({"Martin Eastwood"}))
+    : gin::Processor (false, createProcessorOptions())
 {
 	mix           = addExtParam ("MIX",           "Mix",     "", "%",	{ 0.0f, 100.0f, 0.0f, 1.0f }, 100.0f, 0.0f, [] (const gin::Parameter&, float v)
 	{
@@ -83,10 +91,13 @@ void MverbAudioProcessor::updateParams()
     mverb.setParameter (MVerb<float>::EARLYMIX, earlymix->getUserValue() / 100.0f);
 }
 
-void MverbAudioProcessor::processBlock (juce::AudioSampleBuffer& buffer, juce::MidiBuffer&)
+void MverbAudioProcessor::processBlock (juce::AudioSampleBuffer& buffer, juce::MidiBuffer& midi)
 {
+    if (midiLearn)
+        midiLearn->processBlock (midi, buffer.getNumSamples());
+
     auto samples  = buffer.getNumSamples();
-    
+
     updateParams();
     
     float* data[2] = { buffer.getWritePointer (0), buffer.getWritePointer (1) };

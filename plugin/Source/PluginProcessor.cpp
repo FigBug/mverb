@@ -5,10 +5,9 @@
 //==============================================================================
 static gin::ProcessorOptions createProcessorOptions()
 {
-    gin::ProcessorOptions opts;
-    opts.withAdditionalCredits ({"Martin Eastwood"});
-    opts.hasMidiLearn = true;
-    return opts;
+    return gin::ProcessorOptions()
+        .withAdditionalCredits ({"Martin Eastwood"})
+        .withMidiLearn();
 }
 
 MverbAudioProcessor::MverbAudioProcessor()

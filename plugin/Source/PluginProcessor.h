@@ -24,6 +24,9 @@ public:
     MverbAudioProcessor();
     ~MverbAudioProcessor() override;
 
+    juce::File getProgramDirectory() override;
+    juce::Array<juce::File> getFactoryProgramDirectories() override;
+
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;

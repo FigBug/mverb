@@ -1,6 +1,46 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
-#include "BinaryData.h"
+
+//==============================================================================
+namespace
+{
+    juce::File userResourceRoot()
+    {
+       #if JUCE_MAC
+        return juce::File::getSpecialLocation (juce::File::userHomeDirectory)
+                  .getChildFile ("Library/Audio/Presets/SocaLabs/Mverb2020");
+       #elif JUCE_WINDOWS
+        return juce::File::getSpecialLocation (juce::File::userApplicationDataDirectory)
+                  .getChildFile ("SocaLabs/Mverb2020");
+       #else
+        return juce::File::getSpecialLocation (juce::File::userApplicationDataDirectory)
+                  .getChildFile ("SocaLabs/Mverb2020");
+       #endif
+    }
+
+    juce::File systemResourceRoot()
+    {
+       #if JUCE_MAC
+        return juce::File ("/Library/Audio/Presets/SocaLabs/Mverb2020");
+       #elif JUCE_WINDOWS
+        return juce::File::getSpecialLocation (juce::File::commonApplicationDataDirectory)
+                  .getChildFile ("SocaLabs/Mverb2020");
+       #else
+        return juce::File ("/usr/share/SocaLabs/Mverb2020");
+       #endif
+    }
+
+    juce::File legacyUserProgramDirectory()
+    {
+       #if JUCE_MAC
+        return juce::File::getSpecialLocation (juce::File::userApplicationDataDirectory)
+                  .getChildFile ("Application Support/com.socalabs/Mverb2020/programs");
+       #else
+        return juce::File::getSpecialLocation (juce::File::userApplicationDataDirectory)
+                  .getChildFile ("com.socalabs/Mverb2020/programs");
+       #endif
+    }
+}
 
 //==============================================================================
 static gin::ProcessorOptions createProcessorOptions()
@@ -50,17 +90,40 @@ MverbAudioProcessor::MverbAudioProcessor()
 		return gin::formatNumber (juce::Decibels::gainToDecibels (v / 100.0f));
 	});
 
-	for (int i = 0; i < BinaryData::namedResourceListSize; i++)
+	// One-time migration of any user presets from the pre-installer location.
+	// Factory presets now live in systemResourceRoot()/Presets and are surfaced
+	// via getFactoryProgramDirectories(). User saves go to userResourceRoot()/Presets.
 	{
-		int sz = 0;
-		if (auto data = BinaryData::getNamedResource (BinaryData::namedResourceList[i], sz))
-			extractProgram (BinaryData::originalFilenames[i], juce::MemoryBlock (data, size_t (sz)));
+		auto oldDir = legacyUserProgramDirectory();
+		auto newDir = userResourceRoot().getChildFile ("Presets");
+		if (oldDir.isDirectory()
+			&& newDir.findChildFiles (juce::File::findFiles, false, "*.xml").isEmpty())
+		{
+			if (! newDir.isDirectory())
+				newDir.createDirectory();
+			for (auto f : oldDir.findChildFiles (juce::File::findFiles, false, "*.xml"))
+				f.copyFileTo (newDir.getChildFile (f.getFileName()));
+		}
 	}
     init();
 }
 
 MverbAudioProcessor::~MverbAudioProcessor()
 {
+}
+
+//==============================================================================
+juce::File MverbAudioProcessor::getProgramDirectory()
+{
+    auto dir = userResourceRoot().getChildFile ("Presets");
+    if (! dir.isDirectory())
+        dir.createDirectory();
+    return dir;
+}
+
+juce::Array<juce::File> MverbAudioProcessor::getFactoryProgramDirectories()
+{
+    return { systemResourceRoot().getChildFile ("Presets") };
 }
 
 //==============================================================================

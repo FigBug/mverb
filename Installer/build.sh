@@ -26,9 +26,10 @@ mkdir -p "$PROJECT_ROOT/bin"
 FLAT_PRESETS="$PROJECT_ROOT/Installer/_flat_presets"
 rm -Rf "$FLAT_PRESETS"
 mkdir -p "$FLAT_PRESETS"
-find "$PROJECT_ROOT/plugin/Resources/Presets" -name "*.xml" -type f -exec cp {} "$FLAT_PRESETS/" \; 2>/dev/null
-# Some plugins keep XMLs at the Resources root rather than under Presets/.
-find "$PROJECT_ROOT/plugin/Resources" -maxdepth 1 -name "*.xml" -type f -exec cp {} "$FLAT_PRESETS/" \; 2>/dev/null
+# Either nested under Presets/<category>/ or flat under Resources/. Tolerate both.
+[ -d "$PROJECT_ROOT/plugin/Resources/Presets" ] && \
+  find "$PROJECT_ROOT/plugin/Resources/Presets" -name "*.xml" -type f -exec cp {} "$FLAT_PRESETS/" \;
+find "$PROJECT_ROOT/plugin/Resources" -maxdepth 1 -name "*.xml" -type f -exec cp {} "$FLAT_PRESETS/" \; 2>/dev/null || true
 
 
 ############################################################

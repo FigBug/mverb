@@ -58,13 +58,13 @@ Name: "clap";      Description: "CLAP plug-in";  Types: full custom; Flags: chec
 Name: "resources"; Description: "Factory presets"; Types: full custom; Flags: fixed
 
 [InstallDelete]
-Type: files;          Name: "{commoncf64}\VST\Mverb2020.dll";   Components: vst
+Type: files;          Name: "{commoncf64}\VST2\Mverb2020.dll";   Components: vst
 Type: filesandordirs; Name: "{commoncf64}\VST3\Mverb2020.vst3"; Components: vst3
 Type: files;          Name: "{commoncf64}\CLAP\Mverb2020.clap"; Components: clap
 Type: filesandordirs; Name: "{commonappdata}\SocaLabs\Mverb2020\Presets";        Components: resources
 
 [Files]
-Source: "bin\VST\Mverb2020.dll";    DestDir: "{commoncf64}\VST";                     Flags: ignoreversion overwritereadonly; Components: vst
+Source: "bin\VST\Mverb2020.dll";    DestDir: "{commoncf64}\VST2";                     Flags: ignoreversion overwritereadonly; Components: vst
 Source: "bin\VST3\Mverb2020.vst3\*"; DestDir: "{commoncf64}\VST3\Mverb2020.vst3\"; Flags: ignoreversion overwritereadonly recursesubdirs; Components: vst3
 Source: "bin\CLAP\Mverb2020.clap";   DestDir: "{commoncf64}\CLAP";                    Flags: ignoreversion overwritereadonly; Components: clap
 Source: "..\_flat_presets\*.xml"; DestDir: "{commonappdata}\SocaLabs\Mverb2020\Presets\"; Flags: ignoreversion; Components: resources

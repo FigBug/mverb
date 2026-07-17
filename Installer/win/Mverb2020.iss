@@ -56,6 +56,7 @@ Name: "vst";       Description: "VST plug-in";   Types: full custom; Flags: chec
 Name: "vst3";      Description: "VST3 plug-in";  Types: full custom; Flags: checkablealone
 Name: "clap";      Description: "CLAP plug-in";  Types: full custom; Flags: checkablealone
 Name: "resources"; Description: "Factory presets"; Types: full custom; Flags: fixed
+Name: "crashreporter"; Description: "Crash reporter (shared component, only updated if newer)"; Types: full custom; Flags: checkablealone
 
 [InstallDelete]
 Type: files;          Name: "{commoncf64}\VST2\Mverb2020.dll";   Components: vst
@@ -68,3 +69,9 @@ Source: "bin\VST\Mverb2020.dll";    DestDir: "{commoncf64}\VST2";               
 Source: "bin\VST3\Mverb2020.vst3\*"; DestDir: "{commoncf64}\VST3\Mverb2020.vst3\"; Flags: ignoreversion overwritereadonly recursesubdirs; Components: vst3
 Source: "bin\CLAP\Mverb2020.clap";   DestDir: "{commoncf64}\CLAP";                    Flags: ignoreversion overwritereadonly; Components: clap
 Source: "..\_flat_presets\*.xml"; DestDir: "{commonappdata}\SocaLabs\Mverb2020\Presets\"; Flags: ignoreversion; Components: resources
+; CrashReporter app → C:\Program Files\Rabien Software\Crash Reporter, plus this
+; plugin's registration JSON → C:\ProgramData\Rabien Software\Crash Reporter\Plugins.
+; Shared across plugins: the app is only updated if newer and never removed on
+; uninstall; the registration JSON is always installed and never removed.
+Source: "bin\CrashReporter\CrashReporter.exe"; DestDir: "{commonpf}\Rabien Software\Crash Reporter"; Flags: skipifsourcedoesntexist uninsneveruninstall; Components: crashreporter
+Source: "bin\CrashReporter\mverb2020.json";    DestDir: "{commonappdata}\Rabien Software\Crash Reporter\Plugins"; Flags: ignoreversion uninsneveruninstall
